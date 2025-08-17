@@ -58,7 +58,8 @@ export default function SignupPage() {
           router.push("/dashboard");
         }
       }
-    } catch (err) {
+    } catch (error) {
+      console.error("Error during signup:", error);
       setError("An unexpected error occurred. Please try again.");
     } finally {
       setIsLoading(false);

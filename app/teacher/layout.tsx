@@ -2,7 +2,6 @@
 
 import { ReactNode } from "react";
 import {
-  Bell,
   Home,
   LineChart,
   Menu,

@@ -14,7 +14,6 @@ import { File, Users, ArrowRight, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
-import { ReactElement } from "react";
 
 // Data for the quiz type cards
 const quizTypes = [

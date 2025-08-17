@@ -9,7 +9,7 @@ import { useSession } from "next-auth/react";
 import { Spinner } from "./theme/spinner";
 
 export function LandingPageNav() {
-  const { data: session, status } = useSession();
+  const { status } = useSession();
 
   return (
     <nav className="sticky top-0 z-50 backdrop-blur-xl bg-white/80 dark:bg-gray-900/80 border-b border-gray-200/20">

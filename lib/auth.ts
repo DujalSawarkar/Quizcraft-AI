@@ -16,7 +16,7 @@ export const authOptions: AuthOptions = {
       allowDangerousEmailAccountLinking: true,
       authorization: {
         params: {
-          prompt: "select_account",
+          prompt: "select_account consent",
           access_type: "offline",
           response_type: "code",
         },

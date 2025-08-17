@@ -5,8 +5,19 @@ import { Button } from "@/components/ui/button";
 import { Brain, Zap, Users, Trophy, Star, ArrowRight } from "lucide-react";
 import { LandingPageNav } from "@/components/landing-nav"; // Import the new nav
 import Link from "next/link";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 export default function LandingPage() {
+  const { data: session } = useSession();
+  const router = useRouter();
+  const handleGetStarted = () => {
+    if (session) {
+      router.push("/teacher/dashboard"); // ✅ already logged in
+    } else {
+      router.push("/login"); // ✅ not logged in
+    }
+  };
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100">
       <LandingPageNav />
@@ -56,8 +67,11 @@ export default function LandingPage() {
                 </p>
 
                 <div className="flex sm:flex-row gap-4 mb-8">
-                  <Button className="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:opacity-90 transition-opacity">
-                    <Link href="/teacher/dashboard">Get started</Link>
+                  <Button
+                    onClick={handleGetStarted} // ✅ use function instead of Link
+                    className="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:opacity-90 transition-opacity"
+                  >
+                    Get started
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </div>

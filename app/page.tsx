@@ -1,44 +1,18 @@
-// app/page.tsx
 "use client";
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { Brain, Zap, Users, Trophy, Star, ArrowRight } from "lucide-react";
+import { LandingPageNav } from "@/components/landing-nav"; // Import the new nav
 import Link from "next/link";
-import { ThemeToggle } from "@/components/theme/theme-toggle";
-import { Brain, Zap, Users, Trophy, ArrowRight, Star } from "lucide-react";
 
 export default function LandingPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900">
-      {/* Navbar */}
-      <nav className="sticky top-0 z-50 backdrop-blur-xl bg-white/80 dark:bg-gray-900/80 border-b border-gray-200/20">
-        <div className="mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            {/* Logo */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="flex items-center space-x-2"
-            >
-              <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                <Brain className="w-5 h-5 text-white" />
-              </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                QuizCraft AI
-              </span>
-            </motion.div>
-            {/* Right side - Theme Toggle and Login */}
-            <div className="flex items-center space-x-4">
-              <ThemeToggle />
-              <Button variant="outline" asChild>
-                <Link href="/login">Login</Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </nav>
+      {/* Use the new, auth-aware navigation component */}
+      <LandingPageNav />
 
-      {/* Hero Section */}
+      {/* Hero Section (No changes needed here) */}
       <section className="relative overflow-hidden pt-20 pb-32">
         {/* Background decorative elements */}
         <div className="absolute inset-0 overflow-hidden">
@@ -83,7 +57,10 @@ export default function LandingPage() {
                 </p>
 
                 <div className="flex sm:flex-row gap-4 mb-8">
-                  <Button variant="outline">Get Started</Button>
+                  <Button className="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:opacity-90 transition-opacity">
+                    <Link href="/teacher/dashboard">Get started</Link>
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
                 </div>
 
                 <div className="flex items-center space-x-8 text-sm text-gray-500 dark:text-gray-400">

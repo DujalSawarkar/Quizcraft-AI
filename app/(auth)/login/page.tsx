@@ -34,7 +34,7 @@ export default function LoginPage() {
       setError("Invalid email or password. Please try again.");
     } else {
       // On successful login, redirect to the dashboard
-      router.push("/dashboard");
+      router.push("/teacher/dashboard");
     }
     setIsLoading(false);
   };
@@ -124,7 +124,9 @@ export default function LoginPage() {
               variant="outline"
               className="w-full flex items-center gap-2"
               disabled={isLoading}
-              onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
+              onClick={() =>
+                signIn("google", { callbackUrl: "/teacher/dashboard" })
+              }
             >
               <GoogleIcon />
               Sign in with Google

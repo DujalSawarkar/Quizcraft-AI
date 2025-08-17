@@ -55,7 +55,7 @@ export default function SignupPage() {
           );
           router.push("/auth/login");
         } else {
-          router.push("/dashboard");
+          router.push("/teacher/dashboard");
         }
       }
     } catch (error) {
@@ -177,22 +177,30 @@ export default function SignupPage() {
             <Button
               type="submit"
               className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:opacity-90 transition-opacity"
-              disabled={isLoading}
             >
-              {isLoading ? <Spinner /> : "Create Account"}
+              {isLoading ? (
+                <div className="flex items-center gap-2">
+                  <Spinner size="sm" />
+                  Creating...
+                </div>
+              ) : (
+                "Create Account"
+              )}
             </Button>
             <Button
               variant="outline"
               className="w-full flex items-center gap-2"
               disabled={isLoading}
-              onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
+              onClick={() =>
+                signIn("google", { callbackUrl: "/teacher/dashboard" })
+              }
             >
               <GoogleIcon />
               Sign up with Google
             </Button>
           </form>
           <div className="mt-4 text-center text-sm">
-            Already have an account?{" "}
+            {" Already have an account? "}
             <Link
               href="/auth/login"
               className="underline font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:opacity-80 transition-opacity"
